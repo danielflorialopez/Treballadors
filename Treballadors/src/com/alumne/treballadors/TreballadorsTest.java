@@ -17,7 +17,7 @@ class TreballadorsTest {
 		//Codi per a provocar excepcions, modificat a partir de 'exemple de la calculadora
 		Exception excepcioMeva = assertThrows(Exception.class, () -> treballadorMeu.setNom(""));
 		//L'assercio mira si el text de l'excepcio avisa del problema de nom curt
-		assertEquals("El nom ha de tenir 3 o més caracters", excepcioMeva.getMessage());
+		assertEquals("El nom ha de tenir 3 o més caràcters", excepcioMeva.getMessage());
 	}
 
 	@Test
@@ -58,9 +58,9 @@ class TreballadorsTest {
 	public void testHoresExtres() {
 		int hores = 8;
 		Treballador treballador = new Treballador();
-
+		// Assignem un número d'hores extres i fem un constructor de Treballador
 		treballador.setHoresExtres(hores);
-
+		// Comprovem amb l'asserció que les hores extres són les indicades i en cas contrari mostra missatge d'error
 		assertEquals(hores, treballador.getHoresExtres(), "Els dos valors de les hores extres han de coincidir");
 	}
 
@@ -68,9 +68,10 @@ class TreballadorsTest {
 	public void testTipusTreballadorIncorrecte() {
 		int treballador_incorrecte = 3;
 		Treballador treballador = new Treballador();
-
+		// Assignem un número de treballador incorrecte i fem un constructor de treballador
 		Exception excepcioMeva = assertThrows(Exception.class, () -> treballador.setTipusTreballador(treballador_incorrecte));
-
+		// Creem una excepció i li assignem el que retorna l'excepció de setTipusTreballador
+		// i la comparem amb l'String del que hauria de retornar
 		assertEquals("Tipus de treballador no vàlid", excepcioMeva.getMessage());
 	}
 
@@ -78,13 +79,16 @@ class TreballadorsTest {
 	public void testTipusTreballadorCorrecte() {
 		int treballador_correcte = 0;
 		Treballador treballador = new Treballador();
-
+		// Assignem un número de treballador correcte i fem un constructor de treballador
+		// Fem un trycatch per a provar si setTipusTreballador ens dóna o no una excepció
+		// i en cas que ens doni mostrar el missatge d'error
 		try {
 			treballador.setTipusTreballador(treballador_correcte);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		};
-
+		//Comparem el treballador correcte i el resultat del mètode getTipusTreballador
+		// i en cas de que no coincideixin mostrem el nostre missatge
 		assertEquals(treballador_correcte, treballador.getTipusTreballador(), "Els dos números de treballador han de coincidir");
 	}
 }
